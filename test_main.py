@@ -31,17 +31,17 @@ class TestBooksCollector:
         long_name = ('A' * 41)
         collector.add_new_book(long_name)
         assert long_name not in collector.get_books_genre()
-        # assert len(long_name) == 40
 
-    def test_set_book_genre_not_in_list_gender(self):
+    def test_set_book_genre_not_in_list_genre(self):
         collector = BooksCollector()
         book_name = "Линии грез:Линия грез"
+        expected_book_genre = 'Сказка'
         collector.add_new_book(book_name)
-        collector.set_book_genre(book_name, " ")
+        collector.set_book_genre(book_name, expected_book_genre)
 
-        not_at_list_genre = collector.get_book_genre(book_name)
+        book_genre = collector.get_book_genre(book_name)
 
-        assert book_name not in not_at_list_genre
+        assert len(book_genre) == 0
 
     @pytest.mark.parametrize(
         "name, genre",
@@ -113,7 +113,6 @@ class TestBooksCollector:
     def test_add_book_in_favorites_with_genre(self):
         collector = BooksCollector()
         collector.add_new_book('Рыцари Сорока Островов')
-        collector.set_book_genre('Рыцари Сорока Островов', 'Фантастика')
         book_collection = collector.get_books_genre()
         assert 'Рыцари Сорока Островов' in book_collection
         collector.add_book_in_favorites('Рыцари Сорока Островов')

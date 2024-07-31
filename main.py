@@ -55,15 +55,3 @@ class BooksCollector:
     # получаем список Избранных книг
     def get_list_of_favorites_books(self):
         return self.favorites
-
-
-booksCollector = BooksCollector()
-
-booksCollector.add_new_book('Anna Korenina')
-booksCollector.add_new_book('Anna ')
-booksCollector.set_book_genre('Anna ','Фантастика')
-
-booksCollector.set_book_genre('Anna Korenina','Фантастика')
-print(booksCollector.get_book_genre(name = 'Anna Korenina'))
-print(booksCollector.get_books_with_specific_genre('Фантастика'))
-print(booksCollector.get_books_genre())
